@@ -15,7 +15,7 @@ boards: any
 flash_kb: 48
 
 permissions:
-  network: [api.adsb.lol, api.planespotters.net, t.plnspttrs.net, api.adsbdb.com]
+  network: [opendata.adsb.fi, api.planespotters.net, t.plnspttrs.net, api.adsbdb.com]
   # The screen asks these itself, for the aircraft it shows (a fetch the screen asks for, plugin API 0.27).
 attributes: [cloud]
 privacy: https://github.com/MaxGramser/tessera-plugins/blob/main/plugins/plane_radar/README.md#what-leaves-your-home
@@ -24,7 +24,7 @@ fetch:
   # The aircraft within the range of the place, nearest first: adsb.lol's live ADS-B positions, the range in nautical
   # miles. The place goes rounded to two decimals (about a kilometre).
   - id: sky
-    url: "https://api.adsb.lol/v2/point/{place.latitude:2}/{place.longitude:2}/{range}"
+    url: "https://opendata.adsb.fi/api/v3/lat/{place.latitude:2}/lon/{place.longitude:2}/dist/{range}"
     every: 30s
     map:
       items: "$.ac[*]"
