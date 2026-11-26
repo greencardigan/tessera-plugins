@@ -22,8 +22,12 @@ jobs:
   index:
     runs-on: ubuntu-latest
     steps:
+      # The branch as it is now, never the commit that started the run: two runs for one commit (a push and a run
+      # started by hand, as a release does) wait for each other (concurrency), and the second has to build on what
+      # the first pushed, or its own push is refused as behind.
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
@@ -42,7 +46,7 @@ jobs:
             if git diff --quiet index.json; then
               message="Index: likes"
             else
-              message="Index: rebuilt for ${GITHUB_SHA::7}"
+              message="Index: rebuilt for $(git rev-parse --short=7 HEAD)"
             fi
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

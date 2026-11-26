@@ -1,4 +1,4 @@
-# The firmware API (plugin API 0.28)
+# The firmware API (plugin API 0.29)
 
 A plugin's code runs on the screen as an ESPHome component. It talks to Tessera's core through one header:
 
@@ -9,8 +9,8 @@ A plugin's code runs on the screen as an ESPHome component. It talks to Tessera'
 The header lives in the Tessera repository at `components/smart_display/plugin_api.h`; it is the reference, and this
 page explains it. Everything is in namespace `tessera`.
 
-A manifest names the plugin API it was written for: `api: "0.8"`, or `"0.9"` up to `"0.28"` for the parts those
-brought; the plugin API 0.28 is the one the core offers now (on Tessera's dev branch; the release has 0.24 until the next). Which cores a plugin builds on is under "Versions" at the end of this page.
+A manifest names the plugin API it was written for: `api: "0.8"`, or `"0.9"` up to `"0.29"` for the parts those
+brought; the plugin API 0.29 is the one the core offers now (on Tessera's dev branch; the release has 0.24 until the next). Which cores a plugin builds on is under "Versions" at the end of this page.
 
 A plugin adds to the screen in a few kinds of parts: tiles on a page, cards over the page, tap actions for Tessera's own
 tiles, items in the top bar, rows on the settings page, (0.14) screensavers, which the screen shows over the whole
@@ -404,6 +404,31 @@ most wait, more are left out so a run never trails behind the finger. Tap sound 
 sound follows the screen's volume. On a board whose microphone and speaker share one bus (`AUDIO_HALF_DUPLEX`), a sound
 waits while something listens, and the player drops it when the speaker took nothing of it for a second.
 
+### Louder than the screen (0.29)
+
+A sound plays at the screen's own volume. A plugin whose sound has to be heard over that, an alarm clock, raises the
+speaker for it and puts it back after:
+
+```cpp
+// when the alarm starts ringing; 0.9 is 90 % on the same scale as the screen's volume in Home Assistant
+tessera::audio::raise_volume(this, 0.9f);
+// when it stops, is snoozed or dismissed, and in the `lost` of a claim
+tessera::audio::restore_volume(this);
+```
+
+- `raise_volume(plugin, volume)` sets the speaker to at least `volume`, 0 to 1 as Home Assistant shows the screen's
+  volume (1 is its 100 %). It never makes the screen quieter: where the screen stands louder already, it stays there.
+  Again with another `volume` changes the plugin's level. False on a board without a speaker.
+- `restore_volume(plugin)` puts back the screen's own volume. Call it when the sound ends, whatever ended it.
+- A call's ring raises the speaker the same way. The screen keeps what its volume was in one place, so an alarm and a
+  ring that overlap never put back each other's level, in whatever order they stop.
+- Nothing of it is stored: a restart or an update in the middle of a ring comes back at the screen's own volume, and an
+  update puts it back before it starts. Someone who moves the volume while it is raised keeps what they chose. A muted
+  screen stays muted.
+
+Never call `set_volume()` on `ts_speaker` yourself: it sets the speaker's volume for everything that plays, Home
+Assistant does not see it, and nothing puts it back.
+
 ## Pictures on a tile
 
 A tile can show pictures (0.10): a film's poster beside its title, a person's photo, a logo. The plugin lays out places
@@ -767,17 +792,36 @@ The screen's look is the same on every tile, so a plugin draws with the core's s
 | `ui::color(Role)` | A colour by its role. |
 | `ui::icon(codepoint)` | An icon of Tessera's set as text, for a label in `Font::ICON` or `ICON_SMALL`. |
 
-Fonts (`tessera::Font`), largest first. Take the largest that fits.
+Fonts (`tessera::Font`), largest first. Take the largest that fits. A plugin brings no font of its own, also on a
+board with room for one: every font here is already in every build, so these cost nothing, and a screen keeps one set
+of sizes.
 
 | Font | Used for |
 |---|---|
-| `DIGITS` (0.9) | The largest: the digits of a climate card's setpoint (64 px on the standard look, 40 on the compact). Only `0`-`9`, `-`, `.`, `,`, `°` and `%`: take it where `ui::covers(value, Font::DIGITS)`, else step down to `VALUE`. It is a font every screen has already, so it costs no flash. |
+| `DIGITS_PAGE` (0.29) | The digits of Tessera's bedside clock: the largest the whole page takes for `00:00` (212 px on a 4.3-inch, 478 on a 10-inch). On a board where that is not a fifth larger than `DIGITS_LARGE` (the CYD, the 4-inch boards, every board with 4 MB of flash) it is `DIGITS_LARGE` itself. Only `0`-`9` and `:`. |
+| `DIGITS_LARGE` (0.29) | The digits of Tessera's flip clock: two of them fill half the page's width (73 px on a CYD, about 150 on a 4-inch, 270 on a 10-inch). Only `0`-`9` and `:`. |
+| `DIGITS` (0.9) | The digits of a climate card's setpoint (64 px on the standard look, 40 on the compact). Only `0`-`9`, `-`, `.`, `,`, `°` and `%`: take it where `ui::covers(value, Font::DIGITS)`, else step down to `VALUE`. It is a font every screen has already, so it costs no flash. |
 | `VALUE` | The big number of a card. |
 | `HEADLINE` | Large words. |
 | `TITLE` | A card's name (bold). |
 | `BODY_LARGE` | Words on a key. |
 | `BODY` | A card's second line. |
 | `ICON`, `ICON_SMALL` | Icons of Tessera's set. |
+
+A clock as large as its tile (0.29): the time in the largest of the clocks' digits that fits, then `DIGITS` or `VALUE`.
+`DIGITS_LARGE` and `DIGITS_PAGE` hold digits and the colon alone, so a 12-hour clock writes its AM or PM in a label of
+its own (`BODY`, `TITLE`).
+
+```cpp
+void fit_time(lv_obj_t *label, const std::string &time, int width, int height) {
+  for (Font f : {Font::DIGITS_PAGE, Font::DIGITS_LARGE, Font::DIGITS, Font::VALUE})
+    if (ui::covers(time, f) && ui::text_width(time, f) <= width && ui::line_height(f) <= height) {
+      ui::set_font(label, f);
+      break;
+    }
+  ui::set_text(label, time);
+}
+```
 
 Colours are theme roles (`theme::Role`, from `theme.h`): each has a light and a dark value, so a tile follows the
 screen's look. The ones a tile needs most:
@@ -973,7 +1017,7 @@ readout by it, so the pictures, a video and whatever reads the frames all stand 
 
 ## Versions
 
-A manifest names the plugin API it was written for: `api: "0.8"` up to `"0.28"`; the plugin API 0.28 is the one the core offers now (on Tessera's dev branch; the release has 0.24 until the next). When a
+A manifest names the plugin API it was written for: `api: "0.8"` up to `"0.29"`; the plugin API 0.29 is the one the core offers now (on Tessera's dev branch; the release has 0.24 until the next). When a
 screen is built, `smart_display.register_plugin()` compares it with the core's and stops the build with one sentence
 when it does not fit. A plugin fits a core when all three hold:
 
@@ -1035,6 +1079,7 @@ brought:
 | 0.26 | A card's own colour: `ui::set_card_color(CardColor)`, `ui::card_color()` and `ui::card_color(CardColor)`, the tile's card in one of the screen's nine card colours. The manifest's side: an entity option that says which entities it is for (`device_class`, `matches`), a tile whose entity options one device fills (`from_device`), up to 24 options, options in a `group`, and a number that may stay empty (`optional`, `placeholder_from`). `tools/check.py` refuses these in a plugin of an older `api`. |
 | 0.27 | Pictures in a popup (`show_popup(plugin, id, make, width)`, the manifest's `popups`, `Popup::on_picture`); `ui::rotate`, a part turned along a course; the roles of an instrument that stays dark in both looks (`theme::INSTRUMENT`, `INSTRUMENT_LINE`, `INSTRUMENT_INK`, `INSTRUMENT_MUTED`, `INSTRUMENT_GLOW`). The app's side: a fetch that uses an attribute of an entity a person chose (`{place.latitude:2}`), a fetch the screen asks for (`asked`, `tessera::send` with `fetch:<id>`), an entity option's `default`, and 12 fields of a mapped item. `tools/check.py` refuses the C++ parts in a plugin of an older `api`. |
 | 0.28 | A card that is an instrument's face: `ui::set_card_color(CardColor::INSTRUMENT)`, the tile's card in the instrument roles' ground in both looks, so a radar, a night sky or a clock face reaches every edge. `tools/check.py` refuses it in a plugin of an older `api`. |
+| 0.29 | The clocks' digits: `Font::DIGITS_LARGE` and `Font::DIGITS_PAGE`, a clock as large as its tile at no cost in flash. A sound louder than the screen: `tessera::audio::raise_volume` and `restore_volume`. And a fix: a tile renamed in the editor is made again, so `TileContext::name` is the new name (before, it kept the old one until something else of the tile changed). `tools/check.py` refuses the new parts in a plugin of an older `api`. |
 
 A minor of the app's or the manifest's side only still counts: a plugin that uses what it brought needs an app that
 knows it ([MANIFEST.md](MANIFEST.md), "Which minor brought a field").

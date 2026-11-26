@@ -77,7 +77,10 @@ API_PARTS = [((0, 9), re.compile(r'Font::DIGITS|\bui::covers\s*\(|Tone::GOOD|\bu
                                   r'|\bshow_popup\s*\(\s*[^,()]+,\s*"'),
               "ui::rotate, the instrument roles (theme::INSTRUMENT...) and show_popup with a popup's id"),
              # A card that is an instrument's face (docs/FIRMWARE_API.md, "The card's own colour", 0.28).
-             ((0, 28), re.compile(r'\bCardColor::INSTRUMENT\b'), "a card that is an instrument's face (CardColor::INSTRUMENT)")]
+             ((0, 28), re.compile(r'\bCardColor::INSTRUMENT\b'), "a card that is an instrument's face (CardColor::INSTRUMENT)"),
+             # The clocks' digits and a sound louder than the screen (docs/FIRMWARE_API.md, 0.29).
+             ((0, 29), re.compile(r'\bFont::DIGITS_(?:LARGE|PAGE)\b|\baudio::(?:raise|restore)_volume\s*\('),
+              "the clocks' digits (Font::DIGITS_LARGE, DIGITS_PAGE) and audio::raise_volume and restore_volume")]
 
 # Forms of the C++ API a minor took away (docs/FIRMWARE_API.md, "Versions"): a plugin that still uses one fails its
 # screen's build at that call on a core of that minor or later, whatever its `api` says, since such a minor is not in

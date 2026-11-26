@@ -18,7 +18,8 @@ plugin API's headers is a new number, and every module is built again for it.
     TESSERA_TREE=<a checkout of Tessera> python3 tools/build_modules.py --out <folder> [--own]
 
 Every release of index.json is built once: one that is already in <folder> is left alone, so a run costs only what is
-new. A plugin of plugins/ is built from this checkout, a community plugin from its release's commit, fetched from its
+new, and a run that built nothing and learned no new reason leaves index.json as it is (no commit on the branch each
+hour; its `built` is when a module or a reason last changed). A plugin of plugins/ is built from this checkout, a community plugin from its release's commit, fetched from its
 repository (`--own` leaves those out). A plugin that needs or brings hardware has nothing a browser can run, and one
 whose plugin.yaml makes ESPHome entities of its own is not built yet: both are listed under `skipped` with the reason,
 and the editor keeps its drawn placeholder for them. Each module is checked the way the app checks it before a browser
@@ -87,6 +88,7 @@ def main():
     listing = folder / 'index.json'
     before = json.loads(listing.read_text()) if listing.is_file() else {}
     modules, skipped = before.get('modules') or {}, before.get('skipped') or {}
+    had = json.dumps([modules, skipped], sort_keys=True)   # as the listing has them, to tell what this run changed
     built = failed = 0
     with tempfile.TemporaryDirectory() as work:
         for plugin in json.loads(Path(args.index).read_text())['plugins']:
@@ -131,10 +133,11 @@ def main():
             modules.setdefault(name, {})[version] = {'sha256': hashlib.sha256(body).hexdigest(), 'bytes': len(body)}
             print(f'built        {name} {version}: {len(body)} bytes')
             built += 1
-    head = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=tree, capture_output=True, text=True).stdout.strip()
-    listing.write_text(json.dumps({'format': 1, 'abi': number, 'tessera': head, 'emscripten': toolchain.compiler(),
-                                   'built': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
-                                   'modules': modules, 'skipped': skipped}, indent=1, sort_keys=True) + '\n')
+    if not listing.is_file() or json.dumps([modules, skipped], sort_keys=True) != had:
+        head = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=tree, capture_output=True, text=True).stdout.strip()
+        listing.write_text(json.dumps({'format': 1, 'abi': number, 'tessera': head, 'emscripten': toolchain.compiler(),
+                                       'built': datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+                                       'modules': modules, 'skipped': skipped}, indent=1, sort_keys=True) + '\n')
     total = sum(len(versions) for versions in modules.values())
     print(f'{number}: {built} built now, {total} modules in all, {sum(len(v) for v in skipped.values())} skipped, {failed} failed')
     return 1 if failed else 0

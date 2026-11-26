@@ -16,7 +16,7 @@ plugin is done.
    carries out the plugin's `fetch` (JSON from a web service) with its own code.
 4. A tile of a plugin is `plugin:<plugin id>.<tile id>` in a screen's layout. The core gives it a card's drawing area
    while its page is on the glass, hands it the data the app sent (`on_state`), and ticks it once a second (`on_tick`).
-5. The plugin API is 0.28 on Tessera's dev branch; the release has 0.24 since Tessera 0.4.91 (firmware 0.58.0). A manifest names the lowest minor whose
+5. The plugin API is 0.29 on Tessera's dev branch; the release has 0.24 since Tessera 0.4.91 (firmware 0.58.0). A manifest names the lowest minor whose
    parts it uses: `api: "0.8"`, `"0.9"` for `Font::DIGITS`, `ui::covers`, `Tone::GOOD`, `ui::set_fill` and
    `ui::tone_color`, `"0.10"` for pictures on a tile, `ui::text` and `tap_point()`, `"0.11"` for `on_press` and
    `on_step`, `"0.12"` for options that keep lists (`multiple`, `search`), a fetch with `each` or `{name|,}`,
@@ -33,7 +33,8 @@ plugin is done.
    `placeholder_from`) and up to 24 options, and `"0.27"` for pictures in a popup (the manifest's `popups`),
    `ui::rotate`, the instrument roles that stay dark (`theme::INSTRUMENT...`), a fetch that uses an entity's
    attribute (`{place.latitude:2}`) and a fetch the screen asks for (`asked`, `fetch:<id>`), and `"0.28"` for a card that is an
-   instrument's face (`CardColor::INSTRUMENT`) and a picture's address whole in a fetch (`as: url`). A plugin builds on a core with the
+   instrument's face (`CardColor::INSTRUMENT`) and a picture's address whole in a fetch (`as: url`), and `"0.29"` for the
+   clocks' digits (`Font::DIGITS_LARGE`, `DIGITS_PAGE`) and a sound louder than the screen (`audio::raise_volume`). A plugin builds on a core with the
    same major and at least its minor, unless a minor after its own is listed as a break: while the major is 0 a name may
    change its meaning, and the core lists those minors (only 0.4 so far); a form a minor takes away fails in the
    compiler at its call instead. So a plugin of 0.7 builds on a core of 0.24, one of 0.3

@@ -1,7 +1,7 @@
 {
  "format": 1,
- "generated": "2026-11-24T04:45:30Z",
- "plugin_api": "0.28",
+ "generated": "2026-11-26T02:54:20Z",
+ "plugin_api": "0.29",
  "blocked": [],
  "featured": [
   "ov_departures",
@@ -8348,15 +8348,15 @@
    "label": "community",
    "status": "ok",
    "release": {
-    "version": "1.0.0",
-    "sha": "7160a24855137f030194dc5933ddf24cc9ae892a",
-    "date": "2026-11-21",
-    "tag": "v1.0.0"
+    "version": "1.1.1",
+    "sha": "22a6831b40cf0ffd4e40d0a1ba36f5fb02654dd7",
+    "date": "2026-11-25",
+    "tag": "v1.1.1"
    },
    "manifest": {
     "id": "ora",
-    "version": "1.0.0",
-    "api": "0.14",
+    "version": "1.1.1",
+    "api": "0.29",
     "icon": "clock-outline",
     "maintainer": "CooLaToS",
     "license": "MIT",
@@ -9137,10 +9137,10 @@
     }
    },
    "readme": {
-    "en": "# Ora\n\nA big clock for Tessera's screensaver, in the colours you choose. Ora (Greek for \"hour\") shows the hours and the\nminutes in two boxes as large as the screen allows, with the date, the weather's icon and the outside temperature under\nthem.\n\n![Ora on a 10-inch, a 4-inch square and a 2.8-inch screen](store.png)\n\n## Set up\n\n1. In Tessera, open **Plugins**, choose **Add with a link** and paste `https://github.com/CooLaToS/tessera-plugin-ora`\n   (or find **Ora** in the list once it is listed there). Add it to a screen; the screen builds once.\n2. Open the screen's **Settings** and the **Screensaver** card. Turn on **Show in standby** (the screen needs\n   **Auto standby** on too).\n3. Click the **Clock** step and choose **Ora** under **Face**.\n4. Pick the colours, the style and the size in the same drawer.\n5. For the weather's icon: in the same drawer, press **+** beside the clock, add your weather entity and choose\n   **Icon** under **Shows**.\n\n## Examples\n\nEvery picture is the real firmware with Ora, drawn by Tessera's plugin bench on a Guition 4-inch (480 x 480) unless it\nsays otherwise. Under each one, the options that make it.\n\n| | |\n|---|---|\n| ![Gold flip cards](docs/images/gold-flip-cards.png) | ![White on blue](docs/images/white-on-blue.png) |\n| **Gold flip cards**: the defaults. | **White on blue**: hours White, boxes Blue. |\n| ![Teal outline, normal size](docs/images/teal-outline-normal.png) | ![Two tones on tinted cards](docs/images/two-tone-tinted.png) |\n| **Normal size**: hours Teal, style Outline, size Normal, date 20 November. | **Two tones**: hours Gold, minutes Champagne, boxes Tinted, date 20/11, row Icons and words. |\n\n<details>\n<summary><b>Show all examples</b> (six more: wood tones, stacked, plain, a CYD and a 10-inch)</summary>\n\n| | |\n|---|---|\n| ![Walnut boxes](docs/images/walnut-champagne-mint.png) | ![Oak and walnut](docs/images/oak-walnut-weekday.png) |\n| **Wood**: hours Champagne, boxes Walnut, date and temperature Mint, date 20/11, row Icons and words. | **Oak and walnut**: hours Oak, minutes Champagne, boxes Walnut, date Oak, date Friday 20 November. |\n| ![Champagne outline, stacked](docs/images/champagne-outline-stacked.png) | ![Plain amber](docs/images/amber-plain.png) |\n| **Outline, stacked**: hours Champagne, style Outline, size Stacked, date Friday 20 November. | **Plain**: hours Amber, style Plain digits, no leading zero, no seconds dot, no date, row Off. |\n| ![On a CYD](docs/images/cyd-gold.png) | ![On a 10-inch screen](docs/images/p4-10inch-two-tone.png) |\n| **CYD 2.8-inch** (320 x 240): the defaults. | **Guition 10.1-inch** (1280 x 800): two tones. |\n\n</details>\n\n## Options\n\n- **Hours colour** and **Minutes colour**: Gold (default), Champagne, Amber, Orange, Red, Pink, Purple, Blue, Teal,\n  Green, Oak, Walnut, Mint, White or Night grey. Give the minutes their own colour for two tones.\n- **Box colour**: Graphite flip cards, cards Tinted with the hours' colour, or any colour above. With **Outline** it is\n  the colour of the line.\n- **Style**: Flip cards, Outline, or Plain digits with a colon.\n- **Size**: Large (side by side, as wide as the screen; best on a square or wide screen), Stacked (hours above\n  minutes; best on a tall screen) or Normal (the screen's own digit size).\n- **Date**: Fri 20 Nov, 20/11, 20 November, Friday 20 November, Friday, or no date.\n- **Weather and entities**: the entities you add to the Clock step's row (the **+** beside the clock in the Clock\n  drawer). A weather entity shows its condition, sun, cloud or rain, before the temperature. Icons (default), icons and\n  words, or off. Up to four; those that do not fit the width are left out.\n- **Date colour** and **Temperature colour** (also the colour of the row's icons).\n- **Night colour**: during the screen's night hours the same colours, the same but dimmer, or one colour for the whole\n  clock (deep red is easy on the eyes).\n- **Leading zero** (09:05 or 9:05) and **Seconds dot**.\n\n## Tried on\n\n- **Real screens**: two Guition ESP32-S3-4848S040 (4-inch, 480 x 480) with Tessera 0.4.99 and firmware 0.62.0, one\n  on a wall and one on a desk: the gold flip cards in Large, the minute changing, the seconds dot, the date and the\n  temperature, in standby by day. The other styles and colours are from the bench so far.\n- **The bench** of tessera-plugins (the real firmware, built for a computer): the CYD 2.8-inch, the Guition 4-inch,\n  the Waveshare 4.3-inch standing up and the Guition 10.1-inch, every option.\n- **The firmware build** on GitHub (`.github/workflows/build.yml`) compiles Ora into the newest Tessera release for the\n  CYD (ESP32, 4 MB), the Guition 4-inch (ESP32-S3) and the Guition 10.1-inch V3 (ESP32-P4), at every change and\n  every Monday.\n- Every screen Tessera supports can run it (`boards: any`) once it has plugin API 0.14. Screens that never go into\n  standby, such as the Waveshare 4.3-inch, show no screensaver at all, so no Ora either.\n- On a large screen (7 and 10 inch) the clock stays in the middle at three times the digits' own size instead of\n  filling the glass: larger, the scaled digits show their pixels.\n\nTried it on another screen? Tell me how it looks in a [\"Tried it on my screen\" issue](https://github.com/CooLaToS/tessera-plugin-ora/issues/new/choose).\n\n## Privacy\n\nOra makes no connections and performs no Home Assistant actions. It draws only what Tessera's clock step hands every\nface: the time, the outside temperature and the entities you put in the clock's row.\n\n## Good to know\n\n- Any colour on any box stays readable: when the digits would not stand out enough from their box (red on blue, say),\n  Ora darkens the box until they do.\n- The weather icon needs a Tessera release with the fix for\n  [MaxGramser/homeassistant_espscreen#448](https://github.com/MaxGramser/homeassistant_espscreen/issues/448): up to\n  Tessera 0.4.99 a plugin's clock face receives the row's icons as 0, so Ora shows the date and the temperature without\n  the icon. Nothing to change in Ora: the icon appears once Tessera hands it over.\n- Large and Stacked scale the screen's largest digits up (a plugin brings no font of its own), so they are a little\n  softer than the font's own size.\n- The night colour is chosen when the screensaver comes on. If the night hours begin while the clock is already showing,\n  it changes the next time the screen goes to standby.\n- The screen moves the whole clock a millimetre every minute, so nothing stands on the same pixels for hours.\n- A screen without the plugin shows Tessera's own clock.\n- English and Greek. The Greek texts show once Tessera itself speaks Greek: its editor and its screens' fonts do not\n  have Greek yet.\n\n## Tests\n\n```sh\nuv run tests/run.py              # unit, check and bench\nuv run tests/run.py unit         # only the unit tests of the face's logic (seconds)\n```\n\n- **unit**: `components/ora/ora_logic.h` (the choices, the time and date texts, the line under the clock, where every\n  part stands on every kind of screen, and the contrast of every colour on every box) compiled for your computer with\n  the sanitizers, `tests/test_logic.cpp`.\n- **check**: Tessera's `tools/check.py`.\n- **bench**: Tessera's bench in strict mode: the showcase on four kinds of screen, then the layout combinations of\n  `tests/combos.py` on the Guition 4-inch. Any finding fails. `ORA_FULL=1` renders all 486 combinations.\n\nThe check and the bench need a clone of [tessera-plugins](https://github.com/MaxGramser/tessera-plugins) beside this\nrepository (or `TESSERA_PLUGINS=<path>`), its bench set up once (`python3 tools/preview.py --setup` there).\n\nOn GitHub, `check.yml` runs the unit tests, Tessera's check and a secret scan, `build.yml` the firmware builds (at\nevery change and every Monday), `tessera-watch.yml` builds again the day a new Tessera release comes out, and\n`release.yml` publishes a release from a `v*` tag only when the check and the builds pass.\n\n## Bugs, ideas and pull requests\n\nFound a bug, tried Ora on a new screen or have an idea? Open an\n[issue](https://github.com/CooLaToS/tessera-plugin-ora/issues/new/choose); the forms ask for what is needed. Pull\nrequests for fixes, translations and small improvements are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first:\nit has the rules and the checks to run.\n\n## Credits\n\nThe layout of the flip cards follows Tessera's own Flip clock example (MIT, Max Gramser). Ora is written from\nTessera's plugin template.\n"
+    "en": "# Ora\n\nA big clock for Tessera's screensaver, in the colours you choose. Ora (Greek for \"hour\") shows the hours and the\nminutes in two boxes as large as the screen allows, with the date, the weather's icon and the outside temperature under\nthem.\n\n![Ora on a 10-inch, a 4-inch square and a 2.8-inch screen](https://raw.githubusercontent.com/CooLaToS/tessera-plugin-ora/main/store.png)\n\n## Set up\n\n1. In Tessera, open **Plugins**, choose **Add with a link** and paste `https://github.com/CooLaToS/tessera-plugin-ora`\n   (or find **Ora** in the list once it is listed there). Add it to a screen; the screen builds once.\n2. Open the screen's **Settings** and the **Screensaver** card. Turn on **Show in standby** (the screen needs\n   **Auto standby** on too).\n3. Click the **Clock** step and choose **Ora** under **Face**.\n4. Pick the colours, the style and the size in the same drawer.\n5. For the weather's icon: in the same drawer, press **+** beside the clock, add your weather entity and choose\n   **Icon** under **Shows**.\n\n## Examples\n\nEvery picture is the real firmware with Ora, drawn by Tessera's plugin bench on a Guition 4-inch (480 x 480) unless it\nsays otherwise. Under each one, the options that make it.\n\n| | |\n|---|---|\n| ![Gold flip cards](https://raw.githubusercontent.com/CooLaToS/tessera-plugin-ora/main/docs/images/gold-flip-cards.png) | ![White on blue](https://raw.githubusercontent.com/CooLaToS/tessera-plugin-ora/main/docs/images/white-on-blue.png) |\n| **Gold flip cards**: the defaults. | **White on blue**: hours White, boxes Blue. |\n| ![Teal outline, normal size](https://raw.githubusercontent.com/CooLaToS/tessera-plugin-ora/main/docs/images/teal-outline-normal.png) | ![Two tones on tinted cards](https://raw.githubusercontent.com/CooLaToS/tessera-plugin-ora/main/docs/images/two-tone-tinted.png) |\n| **Normal size**: hours Teal, style Outline, size Normal, date 20 November. | **Two tones**: hours Gold, minutes Champagne, boxes Tinted, date 20/11, row Icons and words. |\n\n<details>\n<summary><b>Show all examples</b> (six more: wood tones, stacked, plain, a CYD and a 10-inch)</summary>\n\n| | |\n|---|---|\n| ![Walnut boxes](https://raw.githubusercontent.com/CooLaToS/tessera-plugin-ora/main/docs/images/walnut-champagne-mint.png) | ![Oak and walnut](https://raw.githubusercontent.com/CooLaToS/tessera-plugin-ora/main/docs/images/oak-walnut-weekday.png) |\n| **Wood**: hours Champagne, boxes Walnut, date and temperature Mint, date 20/11, row Icons and words. | **Oak and walnut**: hours Oak, minutes Champagne, boxes Walnut, date Oak, date Friday 20 November. |\n| ![Champagne outline, stacked](https://raw.githubusercontent.com/CooLaToS/tessera-plugin-ora/main/docs/images/champagne-outline-stacked.png) | ![Plain amber](https://raw.githubusercontent.com/CooLaToS/tessera-plugin-ora/main/docs/images/amber-plain.png) |\n| **Outline, stacked**: hours Champagne, style Outline, size Stacked, date Friday 20 November. | **Plain**: hours Amber, style Plain digits, no leading zero, no seconds dot, no date, row Off. |\n| ![On a CYD](https://raw.githubusercontent.com/CooLaToS/tessera-plugin-ora/main/docs/images/cyd-gold.png) | ![On a 10-inch screen](https://raw.githubusercontent.com/CooLaToS/tessera-plugin-ora/main/docs/images/p4-10inch-two-tone.png) |\n| **CYD 2.8-inch** (320 x 240): the defaults. | **Guition 10.1-inch** (1280 x 800): two tones. |\n\n</details>\n\n## Options\n\n- **Hours colour** and **Minutes colour**: Gold (default), Champagne, Amber, Orange, Red, Pink, Purple, Blue, Teal,\n  Green, Oak, Walnut, Mint, White or Night grey. Give the minutes their own colour for two tones.\n- **Box colour**: Graphite flip cards, cards Tinted with the hours' colour, or any colour above. With **Outline** it is\n  the colour of the line.\n- **Style**: Flip cards, Outline, or Plain digits with a colon.\n- **Size**: Large (side by side, as wide as the screen; best on a square or wide screen), Stacked (hours above\n  minutes; best on a tall screen) or Normal (the screen's own digit size).\n- **Date**: Fri 20 Nov, 20/11, 20 November, Friday 20 November, Friday, or no date.\n- **Weather and entities**: the entities you add to the Clock step's row (the **+** beside the clock in the Clock\n  drawer). A weather entity shows its condition, sun, cloud or rain, before the temperature. Icons (default), icons and\n  words, or off. Up to four; those that do not fit the width are left out.\n- **Date colour** and **Temperature colour** (also the colour of the row's icons).\n- **Night colour**: during the screen's night hours the same colours, the same but dimmer, or one colour for the whole\n  clock (deep red is easy on the eyes).\n- **Leading zero** (09:05 or 9:05) and **Seconds dot**.\n\n## Tried on\n\n- **Real screens**: two Guition ESP32-S3-4848S040 (4-inch, 480 x 480) running Ora 1.0 on Tessera 0.4.99 and firmware\n  0.62.0, one on a wall and one on a desk: the gold flip cards in Large, the minute changing, the seconds dot, the date\n  and the temperature, in standby by day. The other styles and colours are from the bench so far.\n- **The bench** of tessera-plugins (the real firmware, built for a computer): the CYD 2.8-inch, the Guition 4-inch,\n  the Waveshare 4.3-inch standing up and the Guition 10.1-inch, every option.\n- **The firmware build** on GitHub (`.github/workflows/build.yml`) compiles Ora into the newest Tessera release for the\n  CYD (ESP32, 4 MB), the Guition 4-inch (ESP32-S3) and the Guition 10.1-inch V3 (ESP32-P4), at every change and\n  every Monday.\n- Every screen Tessera supports can run it (`boards: any`) once it has plugin API 0.29 (Tessera 0.4.102, firmware 0.64.0). Screens that never go into\n  standby, such as the Waveshare 4.3-inch, show no screensaver at all, so no Ora either.\n\nTried it on another screen? Tell me how it looks in a [\"Tried it on my screen\" issue](https://github.com/CooLaToS/tessera-plugin-ora/issues/new/choose).\n\n## Privacy\n\nOra makes no connections and performs no Home Assistant actions. It draws only what Tessera's clock step hands every\nface: the time, the outside temperature and the entities you put in the clock's row.\n\n## Good to know\n\n- Any colour on any box stays readable: when the digits would not stand out enough from their box (red on blue, say),\n  Ora darkens the box until they do.\n- Large and Stacked draw the time in Tessera's own clock digits (the flip clock's and the bedside clock's, which every\n  screen carries already), the largest that fits the glass at its own size: sharp on every screen, up to the 10-inch.\n  Where none fits well, the next larger one is drawn a little smaller.\n- The night colour is chosen when the screensaver comes on. If the night hours begin while the clock is already showing,\n  it changes the next time the screen goes to standby.\n- The screen moves the whole clock a millimetre every minute, so nothing stands on the same pixels for hours.\n- A screen without the plugin shows Tessera's own clock.\n- English and Greek. The Greek texts show once Tessera itself speaks Greek: its editor and its screens' fonts do not\n  have Greek yet.\n\n## Tests\n\n```sh\nuv run tests/run.py              # unit, check and bench\nuv run tests/run.py unit         # only the unit tests of the face's logic (seconds)\n```\n\n- **unit**: `components/ora/ora_logic.h` (the choices, the time and date texts, the line under the clock, where every\n  part stands on every kind of screen, and the contrast of every colour on every box) compiled for your computer with\n  the sanitizers, `tests/test_logic.cpp`.\n- **check**: Tessera's `tools/check.py`.\n- **bench**: Tessera's bench in strict mode: the showcase on four kinds of screen, then the layout combinations of\n  `tests/combos.py` on the Guition 4-inch. Any finding fails. `ORA_FULL=1` renders all 486 combinations.\n\nThe check and the bench need a clone of [tessera-plugins](https://github.com/MaxGramser/tessera-plugins) beside this\nrepository (or `TESSERA_PLUGINS=<path>`), its bench set up once (`python3 tools/preview.py --setup` there).\n\nOn GitHub, `check.yml` runs the unit tests, Tessera's check and a secret scan, `build.yml` the firmware builds (at\nevery change and every Monday), `tessera-watch.yml` builds again the day a new Tessera release comes out, and\n`release.yml` publishes a release from a `v*` tag only when the check and the builds pass.\n\n## Bugs, ideas and pull requests\n\nFound a bug, tried Ora on a new screen or have an idea? Open an\n[issue](https://github.com/CooLaToS/tessera-plugin-ora/issues/new/choose); the forms ask for what is needed. Pull\nrequests for fixes, translations and small improvements are welcome. Read [CONTRIBUTING.md](https://github.com/CooLaToS/tessera-plugin-ora/blob/main/CONTRIBUTING.md) first:\nit has the rules and the checks to run.\n\n## Credits\n\nThe layout of the flip cards follows Tessera's own Flip clock example (MIT, Max Gramser). Ora is written from\nTessera's plugin template.\n"
    },
    "changelog": {
-    "en": "# Changelog\n\n## 1.0.0\n- First version: a face of the screensaver's clock. Hours and minutes in two boxes (flip cards, outline or plain),\n  Large, Stacked or Normal; fifteen colours (wood tones and mint among them) with two tones, a box colour of their\n  own and a night colour (or dimmer at night); the date in six forms (with or without the weekday), the weather's\n  icon and the clock's row of entities, the temperature, leading zero and seconds dot.\n- Coloured digits on a coloured box are kept readable: the box darkens until they stand out.\n- Needs a screen with plugin API 0.14 or newer. The weather icon needs a Tessera release with the fix for\n  MaxGramser/homeassistant_espscreen#448.\n"
+    "en": "# Changelog\n\n## 1.1.1\n- The README's pictures and links point at GitHub, so they show on the Tessera Plugins page too (it does not resolve\n  relative paths).\n- \"Tried on\" says the real screens ran Ora 1.0 on Tessera 0.4.99.\n\n## 1.1.0\n- Large and Stacked draw the time in Tessera's own clock digits (plugin API 0.29): the flip clock's and the bedside\n  clock's, the largest that fits the glass at its own size. The digits are sharp now instead of a smaller font scaled\n  up, they fill the 7 and 10-inch screens instead of stopping at three times, and there is no scaled layer to redraw\n  each minute (which on a board without PSRAM, the CYD, came out of the small internal memory). Where no font fits\n  well, the next larger one is drawn a little smaller. The seconds dot, the hinge and the outline grow with the digits.\n- Before the screen's clock is set the boxes stay empty: the clock digits hold no dash.\n- Needs a screen with plugin API 0.29 or newer (Tessera 0.4.102, firmware 0.64.0), which also hands a clock face the\n  row's icons (the weather icon, MaxGramser/homeassistant_espscreen#448).\n\n## 1.0.1\n- Colours only from the plugin API's theme roles: the Tessera mark's four colours, the alert tone, the ink and the\n  instrument's dark ground, alone or mixed. Ora no longer borrows the roles of Tessera's own cards (Bauhaus, energy,\n  bedside, camera), so a change to one of those cards no longer changes Ora or breaks its build. Gold, orange, red,\n  pink and teal are mixes now and look a shade different; red is a little brighter, teal a little bluer.\n- The log of each item of the clock's row is verbose now, not debug: a normal log stays quiet at every update.\n- Needs a screen with plugin API 0.27 or newer (the instrument's ground).\n\n## 1.0.0\n- First version: a face of the screensaver's clock. Hours and minutes in two boxes (flip cards, outline or plain),\n  Large, Stacked or Normal; fifteen colours (wood tones and mint among them) with two tones, a box colour of their\n  own and a night colour (or dimmer at night); the date in six forms (with or without the weekday), the weather's\n  icon and the clock's row of entities, the temperature, leading zero and seconds dot.\n- Coloured digits on a coloured box are kept readable: the box darkens until they stand out.\n- Needs a screen with plugin API 0.14 or newer. The weather icon needs a Tessera release with the fix for\n  MaxGramser/homeassistant_espscreen#448.\n"
    },
    "image": "store.png"
   },
@@ -13013,14 +13013,14 @@
    "label": "community",
    "status": "ok",
    "release": {
-    "version": "1.0.0",
-    "sha": "d35b99a4916e2bb226b1385a427123b5587ce34c",
-    "date": "2026-11-21",
-    "tag": "v1.0.0"
+    "version": "1.1.0",
+    "sha": "4d5408faa429cb7637a34256067c860f66187579",
+    "date": "2026-11-24",
+    "tag": "v1.1.0"
    },
    "manifest": {
     "id": "swiss_departures",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "api": "0.28",
     "icon": "train",
     "maintainer": "synergyx26",
@@ -13053,7 +13053,7 @@
        "max": "3x2",
        "full": true
       },
-      "memory": 1400,
+      "memory": 4300,
       "data": "departures",
       "example": "tile_example",
       "preview": {
@@ -13098,7 +13098,7 @@
           "label": "kind_ship"
          },
          {
-          "value": "cableway",
+          "value": "cable_car",
           "label": "kind_cableway"
          }
         ]
@@ -13191,7 +13191,7 @@
        "max": "3x2",
        "full": true
       },
-      "memory": 1700,
+      "memory": 4600,
       "data": "connections",
       "example": "trip_example",
       "preview": {
@@ -13359,7 +13359,7 @@
      },
      {
       "id": "connections",
-      "url": "https://transport.opendata.ch/v1/connections?from={stop}&to={dest}&limit=12&fields[]=connections/from/departureTimestamp&fields[]=connections/from/delay&fields[]=connections/from/platform&fields[]=connections/from/prognosis/platform&fields[]=connections/to/arrivalTimestamp&fields[]=connections/transfers&fields[]=connections/sections/journey/category&fields[]=connections/sections/journey/number&fields[]=connections/from/prognosis/capacity2nd",
+      "url": "https://transport.opendata.ch/v1/connections?from={stop}&to={dest}&limit=12&fields[]=connections/from/departureTimestamp&fields[]=connections/from/delay&fields[]=connections/from/platform&fields[]=connections/from/prognosis/platform&fields[]=connections/to/arrivalTimestamp&fields[]=connections/transfers&fields[]=connections/sections/journey/category&fields[]=connections/sections/journey/number&fields[]=connections/from/prognosis/capacity2nd&fields[]=connections/to/delay",
       "every": "60s",
       "map": {
        "items": "$.connections[*]",
@@ -13386,6 +13386,10 @@
         },
         "load": {
          "path": "from.prognosis.capacity2nd",
+         "as": "number"
+        },
+        "arrlate": {
+         "path": "to.delay",
          "as": "number"
         },
         "cat2": "sections[1].journey.category",
@@ -13438,6 +13442,84 @@
     ]
    },
    "translations": {
+    "de": {
+     "_meta": {
+      "name": "Deutsch"
+     },
+     "screen": {
+      "now": "jetzt",
+      "minutes": "{n} min",
+      "then": "dann {list}",
+      "none": "Keine Abfahrten",
+      "waiting": "Zeiten laden",
+      "choose_stop": "Haltestelle wählen",
+      "failed": "Gerade keine Zeiten",
+      "old": "Zeiten evtl. alt",
+      "late": "+{n}'",
+      "track": "Gl. {p}",
+      "leave_in": "Gehen in {n} min",
+      "leave_now": "Jetzt gehen",
+      "arrives": "an {t}",
+      "changes": "1 Umstieg | {n} Umstiege",
+      "choose_trip": "Von und Nach wählen",
+      "hours": "{n} h {m} min",
+      "direct_word": "Direkt",
+      "load_1": "Plätze frei",
+      "load_2": "Gut besetzt",
+      "load_3": "Stark besetzt",
+      "towards": "Richtung {to}",
+      "walk": "Fussweg {n} min",
+      "change_min": "Umsteigen, {n} min",
+      "asking_legs": "Route laden",
+      "no_legs": "Momentan keine Details",
+      "stand": "Kante {p}",
+      "more_legs": "+1 weitere Fahrt | +{n} weitere Fahrten"
+     },
+     "app": {
+      "name": "Abfahrten Schweiz",
+      "summary": "Live-Abfahrten ab jeder Schweizer Haltestelle oder jede Verbindung von A nach B, mit Verspätung und Gleis.",
+      "tile_name": "Nächste Abfahrt",
+      "tile_example": "S6 nach Baden in 4 min",
+      "stop": "Haltestelle",
+      "stop_hint": "Tippe ein paar Buchstaben des Bahnhofs oder der Haltestelle, etwa \"Zürich HB\" oder \"Bern, Bahnhof\", und wähle sie aus.",
+      "kind": "Verkehrsmittel",
+      "kind_hint": "Nur Züge, Trams, Busse, Schiffe oder Seilbahnen. Alle zeigt alles.",
+      "kind_all": "Alle",
+      "kind_train": "Zug",
+      "kind_tram": "Tram",
+      "kind_bus": "Bus",
+      "kind_ship": "Schiff",
+      "kind_cableway": "Seilbahn",
+      "line": "Linie",
+      "line_hint": "Zuerst eine Haltestelle wählen. Leer zeigt jede Linie ab hier.",
+      "towards": "Richtung",
+      "towards_hint": "Zuerst eine Haltestelle wählen. Nur Abfahrten mit diesem Ziel; leer zeigt beide Richtungen.",
+      "walk": "Weg zur Haltestelle",
+      "walk_hint": "Nicht mehr erreichbare Abfahrten fallen weg, und die Kachel sagt, wann du losgehen musst.",
+      "late": "Verspätung zeigen",
+      "late_hint": "Eine Abfahrt mit einer Minute oder mehr Verspätung bekommt \"+2'\" hinter dem Ziel.",
+      "track": "Gleis zeigen",
+      "track_hint": "Das Gleis (Gl. 7) oder die Kante (Kante D), bei einer Änderung das neue.",
+      "trip_name": "Verbindungen",
+      "trip_example": "IC5 an 15:56 in 4 min",
+      "trip_from": "Von",
+      "trip_to": "Nach",
+      "trip_to_hint": "Wohin du fährst. Jeder Zug dorthin erscheint, auch einer, der darüber hinaus weiterfährt (der IC 5 nach Rorschach für Zürich HB).",
+      "direct": "Nur direkt",
+      "direct_hint": "Verbindungen mit Umstieg weglassen.",
+      "card_name": "Fahrplan",
+      "group_colours": "Farben",
+      "look": "Aussehen",
+      "look_hint": "Das Blau von Tessera, rote Liniensymbole wie auf Schweizer Abfahrtstafeln oder eine dunkle Abfahrtstafel.",
+      "look_tessera": "Tessera",
+      "look_red": "Schweizer Rot",
+      "look_board": "Abfahrtstafel",
+      "kinds": "Farbe nach Verkehrsmittel",
+      "kinds_hint": "Züge rot, Trams und Metros blau, Busse gelb, Schiffe violett, Seilbahnen grün.",
+      "alarm": "Farbe, wenn es Zeit ist zu gehen",
+      "alarm_hint": "Braucht einen Fussweg. Die Kachel wird orange in der Minute, in der du losgehen solltest."
+     }
+    },
     "en": {
      "_meta": {
       "name": "English"
@@ -13447,7 +13529,7 @@
       "minutes": "{n} min",
       "then": "then {list}",
       "none": "No departures",
-      "waiting": "Asking for times",
+      "waiting": "Loading times",
       "choose_stop": "Choose a stop",
       "failed": "No times right now",
       "old": "Times may be old",
@@ -13457,27 +13539,29 @@
       "leave_now": "Leave now",
       "arrives": "arr. {t}",
       "changes": "1 change | {n} changes",
-      "choose_trip": "Choose both stops",
+      "choose_trip": "Choose From and To",
       "hours": "{n} h {m} min",
       "direct_word": "Direct",
       "load_1": "Seats free",
-      "load_2": "Fairly busy",
+      "load_2": "Busy",
       "load_3": "Very busy",
       "towards": "towards {to}",
       "walk": "Walk {n} min",
       "change_min": "Change, {n} min",
       "asking_legs": "Asking for the route",
-      "no_legs": "No details right now"
+      "no_legs": "No details right now",
+      "stand": "Stand {p}",
+      "more_legs": "+1 more leg | +{n} more legs"
      },
      "app": {
       "name": "Swiss departures",
-      "summary": "The next train, tram, bus or boat from any Swiss stop, or every connection to where you go, live.",
+      "summary": "Live departures from any Swiss stop, or every connection from A to B, with delays and platforms.",
       "tile_name": "Next departure",
       "tile_example": "S6 to Baden in 4 min",
       "stop": "Stop",
       "stop_hint": "Type a few letters of the station or stop, such as \"Zürich HB\" or \"Bern, Bahnhof\", and pick it.",
       "kind": "Transport",
-      "kind_hint": "Only this kind of departure. All keeps every one.",
+      "kind_hint": "Show only trains, trams, buses, boats or cable cars. All shows everything.",
       "kind_all": "All",
       "kind_train": "Train",
       "kind_tram": "Tram",
@@ -13485,15 +13569,15 @@
       "kind_ship": "Boat",
       "kind_cableway": "Cable car",
       "line": "Line",
-      "line_hint": "Empty shows every line that leaves here.",
+      "line_hint": "Choose a stop first. Empty shows every line that leaves here.",
       "towards": "Direction",
-      "towards_hint": "Only departures to this destination. Empty shows both directions.",
+      "towards_hint": "Choose a stop first. Only departures whose last stop is this place; empty shows both directions.",
       "walk": "Walk to the stop",
-      "walk_hint": "Departures you can no longer make are skipped, and the tile says when to leave.",
+      "walk_hint": "Departures you can no longer make are skipped, and the tile says when to leave (\"Leave in 3 min\", \"Leave now\").",
       "late": "Show delays",
       "late_hint": "A departure that runs a minute or more late gets \"+2'\" behind where it goes.",
       "track": "Show platform",
-      "track_hint": "The platform or stand, and the new one when it changed.",
+      "track_hint": "The platform (Pl. 7) or stand (Stand D), and the new one when it changed.",
       "trip_name": "Connections",
       "trip_example": "IC5 arr. 15:56 in 4 min",
       "trip_from": "From",
@@ -13511,15 +13595,172 @@
       "kinds": "Colour by transport",
       "kinds_hint": "Trains red, trams and metros blue, buses yellow, boats purple, cable cars green.",
       "alarm": "Colour when it's time to leave",
-      "alarm_hint": "With a walk to the stop, the tile turns orange in the minute you should set off."
+      "alarm_hint": "Needs a walk to the stop. The tile turns orange in the minute you should set off."
+     }
+    },
+    "fr": {
+     "_meta": {
+      "name": "Français"
+     },
+     "screen": {
+      "now": "maint.",
+      "minutes": "{n} min",
+      "then": "puis {list}",
+      "none": "Aucun départ",
+      "waiting": "Chargement",
+      "choose_stop": "Choisir un arrêt",
+      "failed": "Pas d'horaires",
+      "old": "Horaires anciens ?",
+      "late": "+{n}'",
+      "track": "V. {p}",
+      "leave_in": "Partez dans {n} min",
+      "leave_now": "Partez !",
+      "arrives": "arr. {t}",
+      "changes": "1 corresp. | {n} corresp.",
+      "choose_trip": "Choisir De et À",
+      "hours": "{n} h {m} min",
+      "direct_word": "Direct",
+      "load_1": "Places libres",
+      "load_2": "Occupé",
+      "load_3": "Très occupé",
+      "towards": "direction {to}",
+      "walk": "Marche {n} min",
+      "change_min": "Corresp., {n} min",
+      "asking_legs": "Chargement du trajet",
+      "no_legs": "Pas de détails",
+      "stand": "Quai {p}",
+      "more_legs": "+1 trajet | +{n} trajets"
+     },
+     "app": {
+      "name": "Départs Suisse",
+      "summary": "Départs en direct de tout arrêt suisse, ou chaque correspondance de A à B, avec retards et voies.",
+      "tile_name": "Prochain départ",
+      "tile_example": "S6 pour Baden dans 4 min",
+      "stop": "Arrêt",
+      "stop_hint": "Tape quelques lettres de la gare ou de l'arrêt, comme \"Zürich HB\" ou \"Bern, Bahnhof\", puis choisis-le.",
+      "kind": "Moyen de transport",
+      "kind_hint": "Seulement trains, trams, bus, bateaux ou téléphériques. Tous montre tout.",
+      "kind_all": "Tous",
+      "kind_train": "Train",
+      "kind_tram": "Tram",
+      "kind_bus": "Bus",
+      "kind_ship": "Bateau",
+      "kind_cableway": "Téléphérique",
+      "line": "Ligne",
+      "line_hint": "Choisissez d'abord un arrêt. Vide montre toutes les lignes.",
+      "towards": "Direction",
+      "towards_hint": "Choisissez d'abord un arrêt. Seulement les départs vers ce terminus ; vide montre les deux sens.",
+      "walk": "Trajet à pied vers l'arrêt",
+      "walk_hint": "Les départs que vous ne pouvez plus atteindre sont ignorés, et la tuile dit quand partir.",
+      "late": "Afficher les retards",
+      "late_hint": "Un départ en retard d'une minute ou plus reçoit \"+2'\" derrière sa destination.",
+      "track": "Afficher la voie",
+      "track_hint": "La voie (V. 7) ou le quai (Quai D), et le nouveau s'il a changé.",
+      "trip_name": "Liaisons",
+      "trip_example": "IC5 arr. 15:56 dans 4 min",
+      "trip_from": "De",
+      "trip_to": "À",
+      "trip_to_hint": "Où tu vas. Chaque train qui t'y emmène apparaît, même celui qui continue au-delà (l'IC 5 vers Rorschach pour Zürich HB).",
+      "direct": "Direct seulement",
+      "direct_hint": "Laisser de côté les liaisons avec changement.",
+      "card_name": "Horaire",
+      "group_colours": "Couleurs",
+      "look": "Apparence",
+      "look_hint": "Le bleu de Tessera, des badges de ligne rouges comme sur les tableaux des gares suisses, ou un tableau des départs sombre.",
+      "look_tessera": "Tessera",
+      "look_red": "Rouge suisse",
+      "look_board": "Tableau des départs",
+      "kinds": "Couleur selon le transport",
+      "kinds_hint": "Trains en rouge, trams et métros en bleu, bus en jaune, bateaux en violet, téléphériques en vert.",
+      "alarm": "Couleur quand il faut partir",
+      "alarm_hint": "Nécessite un temps de marche. La tuile devient orange la minute où vous devez partir."
+     }
+    },
+    "it": {
+     "_meta": {
+      "name": "Italiano"
+     },
+     "screen": {
+      "now": "ora",
+      "minutes": "{n} min",
+      "then": "poi {list}",
+      "none": "Nessuna partenza",
+      "waiting": "Caricamento",
+      "choose_stop": "Scegli fermata",
+      "failed": "Nessun orario",
+      "old": "Orari forse vecchi",
+      "late": "+{n}'",
+      "track": "Bin. {p}",
+      "leave_in": "Parti tra {n} min",
+      "leave_now": "Parti ora",
+      "arrives": "arr. {t}",
+      "changes": "1 cambio | {n} cambi",
+      "choose_trip": "Scegli Da e A",
+      "hours": "{n} h {m} min",
+      "direct_word": "Diretto",
+      "load_1": "Posti liberi",
+      "load_2": "Occupato",
+      "load_3": "Molto pieno",
+      "towards": "direzione {to}",
+      "walk": "A piedi {n} min",
+      "change_min": "Cambio, {n} min",
+      "asking_legs": "Caricamento percorso",
+      "no_legs": "Nessun dettaglio",
+      "stand": "Corsia {p}",
+      "more_legs": "+1 tratta | +{n} tratte"
+     },
+     "app": {
+      "name": "Partenze Svizzera",
+      "summary": "Partenze in tempo reale da ogni fermata svizzera, o ogni collegamento da A a B, con ritardi e binari.",
+      "tile_name": "Prossima partenza",
+      "tile_example": "S6 per Baden tra 4 min",
+      "stop": "Fermata",
+      "stop_hint": "Scrivi alcune lettere della stazione o della fermata, come \"Zürich HB\" o \"Bern, Bahnhof\", e sceglila.",
+      "kind": "Mezzo di trasporto",
+      "kind_hint": "Solo treni, tram, bus, battelli o funivie. Tutti mostra tutto.",
+      "kind_all": "Tutti",
+      "kind_train": "Treno",
+      "kind_tram": "Tram",
+      "kind_bus": "Bus",
+      "kind_ship": "Battello",
+      "kind_cableway": "Funivia",
+      "line": "Linea",
+      "line_hint": "Scegli prima una fermata. Vuoto mostra ogni linea da qui.",
+      "towards": "Direzione",
+      "towards_hint": "Scegli prima una fermata. Solo le partenze con questo capolinea; vuoto mostra entrambe le direzioni.",
+      "walk": "A piedi fino alla fermata",
+      "walk_hint": "Le partenze che non puoi più prendere sono saltate, e il riquadro dice quando partire.",
+      "late": "Mostra i ritardi",
+      "late_hint": "Una partenza con un minuto o più di ritardo riceve \"+2'\" dopo la destinazione.",
+      "track": "Mostra il binario",
+      "track_hint": "Il binario (Bin. 7) o la corsia (Corsia D), e il nuovo se è cambiato.",
+      "trip_name": "Collegamenti",
+      "trip_example": "IC5 arr. 15:56 tra 4 min",
+      "trip_from": "Da",
+      "trip_to": "A",
+      "trip_to_hint": "Dove vai. Appare ogni treno che ti ci porta, anche uno che prosegue oltre (l'IC 5 per Rorschach verso Zürich HB).",
+      "direct": "Solo diretti",
+      "direct_hint": "Escludi i collegamenti con cambio.",
+      "card_name": "Orario",
+      "group_colours": "Colori",
+      "look": "Aspetto",
+      "look_hint": "Il blu di Tessera, badge di linea rossi come sui tabelloni delle stazioni svizzere, o un tabellone partenze scuro.",
+      "look_tessera": "Tessera",
+      "look_red": "Rosso svizzero",
+      "look_board": "Tabellone partenze",
+      "kinds": "Colore per mezzo",
+      "kinds_hint": "Treni rossi, tram e metro blu, bus gialli, battelli viola, funivie verdi.",
+      "alarm": "Colore quando è ora di partire",
+      "alarm_hint": "Serve un tempo a piedi. Il riquadro diventa arancione nel minuto in cui devi partire."
      }
     }
    },
    "readme": {
-    "en": "# Swiss departures\n\nLive Swiss public transport on a Tessera screen: when the next train, tram, bus, boat or cable car leaves any stop in\nSwitzerland, and every connection from one stop to another, with delays, platforms and platform changes. The times come\nfrom [transport.opendata.ch](https://transport.opendata.ch), the open service over the Swiss timetable and its real-time\ndata (every operator: SBB, BLS, ZVV, PostAuto and the rest). It needs no account and no key.\n\nNot made by or affiliated with SBB CFF FFS or any transport operator.\n\n## What it adds\n\n**Next departure.** The departures of one stop. On a single cell, the next one as big as the cell allows, with its line\n(S6, IC5, 14) and where it goes above it, and under it the platform and the two after it. On a tile of two columns or\nmore, a list: one row per departure with its platform and countdown.\n\n**Connections.** The trains from one stop to another, as the Swiss journey planner finds them: also a train that runs on\nbeyond your destination (from Solothurn to Zürich HB that is the IC 5, which goes on to Rorschach, and the IR 55). Each\nrow has the line, when it arrives, how many changes it takes, the platform and the countdown, under the title\n\"Solothurn -> Zürich HB\".\n\n**A card for each.** Tap a tile to open it. A Next departure tile shows every departure of its stop. A Connections tile\nshows every connection, with when it leaves and arrives, how long it takes, its changes, its platform and how full the\ntrain is (when the service knows). Tap a connection, on the card or in the tile's list, to see its legs: each train and\nwhere it goes, where and when you board and get off with the platforms, any walk, and the minutes you have to change.\nBack returns to the list.\n\n## Set up\n\n1. Add the plugin to a screen in Tessera (Plugins, or the Plugins tab of the screen). The screen builds once.\n2. In Layout, place **Next departure** or **Connections** from the library's Plugins group.\n3. In the inspector, under **Stop** (or **From** and **To**), type a few letters of the station or stop (`Zürich HB`,\n   `Bern, Bahnhof`, `Lausanne, Flon`) and pick it from the list.\n4. If you like, keep a Next departure tile to one **Transport** (train, tram, bus, boat, cable car), one **Line** or one\n   **Direction**, or a Connections tile to **Direct only**.\n5. Set **Walk to the stop** to the minutes you need. Departures you can no longer make are skipped, and the tile says\n   \"Leave in 3 min\", then \"Leave now\".\n6. Under **Colours**, choose its look (below).\n\n## Colours\n\n- **Look**: *Tessera* (the screen's own blue badges), *Swiss red* (red line badges, as on the boards in the stations) or\n  *Station board* (the tile a dark board with white words, in light and dark alike; its card takes the red badges).\n- **Colour by transport**: trains red, trams and metros blue, buses yellow, boats purple, cable cars green.\n- **Colour when it's time to leave**: with a walk to the stop, the tile turns orange in the minute you should set off.\n- The colours are the screen's own, so they follow its light and dark look. You can still give the tile a colour of\n  your own in the editor; the station board keeps its dark face.\n\n## Good to know\n\n- Tessera asks transport.opendata.ch once a minute per stop or connection, for every screen and tile together. The\n  screen counts down on its own clock in between: the next departure to the second (4:12, then 0:42), the ones after it\n  in minutes. The editor's preview shows whole minutes, by the timetable.\n- A departure that runs a minute or more late gets \"+2'\" behind where it goes, and its countdown includes the delay.\n  Turn **Show delays** off to leave the \"+2'\" out.\n- The platform (Pl. 7) or stand (Pl. D) shows when the service knows it. A platform that changed shows the new one,\n  in full ink on a list. Turn **Show platform** off to leave it out.\n- **Direction** keeps the departures whose *last* stop is that place. A Swiss stop usually serves both directions with\n  one id, so this is how a tile keeps to one side. For trains that only pass through a place, use **Connections**.\n- **Line** matches by line number. At a big station a train and a bus can share a number (S5 and IC5); set\n  **Transport** as well to keep them apart.\n- The Connections tile asks the journey planner for the next connections from now. A train that already left by the\n  timetable but runs late is not among them.\n- The legs of a connection are asked when you tap it, not before, so the card may say \"Asking for the route\" for a\n  moment.\n- A time an hour or more away is shown as a time of day; a departure that is due says \"now\".\n- When the service does not answer, the tile keeps the last times it had and says they may be old.\n- Works on every board. Built and used on a Guition 4-inch (ESP32-S3); checked on the bench on the CYD, a 4.3-inch\n  standing and a 10-inch screen.\n\n## Privacy\n\nTessera (the app in Home Assistant, not the screen) asks `transport.opendata.ch` for the departures of the stops you\nchoose, the connections between the From and To stops of a Connections tile, the legs of a connection you tap, and stop\nnames while you search in the inspector. The service sees the address of your Home Assistant, those stop ids, times and\nwhat you type in the search, nothing else. No key, account or personal data is sent.\n\n## How it works\n\n- `tessera-plugin.yaml`: the two tiles, their options, the card, and the fetches the app carries out: stops by name for\n  the search; the departures of a stop (and from the same answer, the lines and directions for the inspector); the\n  connections between two stops; and the legs of one connection, which the card asks for when you tap it.\n- `components/swiss_departures/`: the ESPHome component that draws the tiles and the card and counts down.\n- `translations/`: the words on the screen (`screen`) and in the app (`app`).\n\nData: [transport.opendata.ch](https://transport.opendata.ch) by Opendata.ch, from the Swiss open transport data platform\n([opentransportdata.swiss](https://opentransportdata.swiss)).\n"
+    "de": "# Abfahrten Schweiz\n\nLive-Fahrplan des Schweizer öffentlichen Verkehrs auf einem Tessera-Bildschirm: wann der nächste Zug, das nächste Tram,\nder nächste Bus, das Schiff oder die Seilbahn an einer beliebigen Haltestelle der Schweiz abfährt, und alle\nVerbindungen von einer Haltestelle zur anderen, mit Verspätung, Gleis und Gleiswechsel. Die Zeiten kommen von\n[transport.opendata.ch](https://transport.opendata.ch), dem offenen Dienst über den Schweizer Fahrplan und seine\nEchtzeitdaten (alle Unternehmen: SBB, BLS, ZVV, PostAuto und die übrigen). Es braucht weder Konto noch Schlüssel.\n\nNicht von SBB CFF FFS oder einem Verkehrsunternehmen hergestellt und in keiner Verbindung mit ihnen.\n\n## Was dazukommt\n\n**Nächste Abfahrt.** Die Abfahrten einer Haltestelle. Auf einer einzelnen Zelle die nächste, so gross wie die Zelle\nerlaubt, mit der Linie (S6, IC5, 14) und dem Ziel darüber, darunter das Gleis und die zwei folgenden. Auf einer Kachel\nvon zwei oder mehr Spalten eine Liste: eine Zeile pro Abfahrt mit Gleis und Countdown.\n\n**Verbindungen.** Die Züge von einer Haltestelle zur anderen, so wie sie der Schweizer Reiseplaner findet: auch ein\nZug, der über dein Ziel hinaus weiterfährt (von Solothurn nach Zürich HB ist das der IC 5, der weiter nach Rorschach\nfährt, und der IR 55). Jede Zeile zeigt die Linie, die Ankunft, die Anzahl Umstiege, das Gleis und den Countdown,\nunter dem Titel \"Solothurn -> Zürich HB\".\n\n**Eine Karte für jede.** Tippe eine Kachel an, um sie zu öffnen. Eine Kachel Nächste Abfahrt zeigt jede Abfahrt ihrer\nHaltestelle. Eine Kachel Verbindungen zeigt jede Verbindung mit Abfahrt und Ankunft, Dauer, Umstiegen, Gleis und\nAuslastung des Zuges (wenn der Dienst sie kennt). Tippe auf eine Verbindung, auf der Karte oder in der Liste der\nKachel, und du siehst ihre Abschnitte: jeden Zug mit Ziel, wo du ein- und aussteigst mit den Gleisen, jeden Fussweg\nund die Minuten zum Umsteigen. Zurück führt zur Liste.\n\n## Einrichten\n\n1. Füge das Plugin in Tessera einem Bildschirm hinzu (Plugins, oder der Tab Plugins des Bildschirms). Der Bildschirm\n   wird einmal neu gebaut.\n2. Platziere in Layout **Nächste Abfahrt** oder **Verbindungen** aus der Gruppe Plugins der Bibliothek.\n3. Tippe im Inspektor unter **Haltestelle** (oder **Von** und **Nach**) ein paar Buchstaben des Bahnhofs oder der\n   Haltestelle (`Zürich HB`, `Bern, Bahnhof`, `Lausanne, Flon`) und wähle sie aus der Liste.\n4. Wenn du magst, beschränke eine Kachel Nächste Abfahrt auf ein **Verkehrsmittel** (Zug, Tram, Bus, Schiff,\n   Seilbahn), eine **Linie** oder eine **Richtung**, oder eine Kachel Verbindungen auf **Nur direkt**.\n5. Stelle **Weg zur Haltestelle** auf die Minuten ein, die du brauchst. Abfahrten, die du nicht mehr erreichst, werden\n   übersprungen, und die Kachel sagt \"Gehen in 3 min\", dann \"Jetzt gehen\".\n6. Wähle unter **Farben** das Aussehen (unten).\n\n## Farben\n\n- **Aussehen**: *Tessera* (die blauen Liniensymbole des Bildschirms), *Schweizer Rot* (rote Liniensymbole wie auf den\n  Tafeln in den Bahnhöfen) oder *Abfahrtstafel* (die Kachel als dunkle Tafel mit weisser Schrift, im hellen wie im\n  dunklen Modus; ihre Karte nimmt die roten Liniensymbole).\n- **Farbe nach Verkehrsmittel**: Züge rot, Trams und Metros blau, Busse gelb, Schiffe violett, Seilbahnen grün.\n- **Farbe, wenn es Zeit ist zu gehen**: Mit einem Weg zur Haltestelle wird die Kachel in der Minute orange, in der du\n  losgehen musst.\n- Die Farben sind die des Bildschirms und folgen seinem hellen und dunklen Modus. Du kannst der Kachel im Editor\n  trotzdem eine eigene Farbe geben; die Abfahrtstafel behält ihr dunkles Gesicht.\n\n## Gut zu wissen\n\n- Tessera fragt transport.opendata.ch einmal pro Minute pro Haltestelle oder Verbindung ab, für alle Bildschirme und\n  Kacheln zusammen. Dazwischen zählt der Bildschirm mit seiner eigenen Uhr in Minuten (\"8 min\"), die nächste Abfahrt in\n  ihren letzten zwei Minuten auf die Sekunde (1:42, 0:42). Eine Zeit eine Stunde oder mehr entfernt erscheint als\n  Uhrzeit.\n- Eine Abfahrt mit einer Minute oder mehr Verspätung bekommt \"+2'\" hinter dem Ziel, und ihr Countdown enthält die\n  Verspätung. Die Ankunftszeit einer Verbindung enthält ihre Verspätung am Ziel. Schalte **Verspätung zeigen** aus, um\n  das \"+2'\" wegzulassen.\n- Das Gleis eines Zuges (Gl. 7) oder die Kante eines Busses oder Trams (Kante D) erscheint, wenn der Dienst es kennt. Ein geändertes Gleis zeigt das neue, in\n  einer Liste in voller Schriftfarbe. Schalte **Gleis zeigen** aus, um es wegzulassen.\n- **Richtung** behält die Abfahrten, deren *letzte* Haltestelle dieser Ort ist. Eine Schweizer Haltestelle bedient meist\n  beide Richtungen mit einer Nummer; so beschränkt eine Kachel sich auf eine Seite. Für Züge, die einen Ort nur\n  durchfahren, nimm **Verbindungen**.\n- **Linie** gilt nach Liniennummer. In einem grossen Bahnhof können ein Zug und ein Bus dieselbe Nummer haben (S5 und\n  IC5); stelle zusätzlich das **Verkehrsmittel** ein, um sie zu trennen.\n- Die Kachel Verbindungen fragt den Reiseplaner nach den nächsten Verbindungen ab jetzt. Ein Zug, der nach Fahrplan\n  schon abgefahren ist, aber verspätet unterwegs, ist nicht dabei.\n- Die Abschnitte einer Verbindung werden erst beim Antippen abgefragt, daher steht auf der Karte kurz \"Route laden\";\n  solange die Karte offen ist, alle anderthalb Minuten neu. Hat eine Verbindung mehr Abschnitte als Platz, sagt die Karte,\n  wie viele noch folgen.\n- **Farbe, wenn es Zeit ist zu gehen** braucht einen Fussweg zur Haltestelle; ohne ihn tut es nichts.\n- Eine fällige Abfahrt sagt \"jetzt\".\n- Antwortet der Dienst nicht, behält die Kachel die letzten Zeiten und sagt, dass sie alt sein können.\n- Auf Deutsch, Französisch, Italienisch und Englisch: sie folgt der Sprache des Bildschirms.\n- Läuft auf jedem Board. Gebaut und täglich benutzt auf einem Guition 4-Zoll (ESP32-S3), dazu gezeichnet auf dem CYD,\n  einem stehenden 4,3-Zoll- und einem 10-Zoll-Bildschirm.\n\n## Datenschutz\n\nTessera (die App in Home Assistant, nicht der Bildschirm) fragt `transport.opendata.ch` nach den Abfahrten der von dir\ngewählten Haltestellen, nach den Verbindungen zwischen Von und Nach einer Kachel Verbindungen, nach den Abschnitten\neiner angetippten Verbindung und nach Haltestellennamen, während du im Inspektor suchst. Der Dienst sieht die Adresse\ndeines Home Assistant, diese Haltestellen-Nummern, Zeiten und was du in die Suche tippst, sonst nichts. Es werden kein\nSchlüssel, kein Konto und keine persönlichen Daten gesendet.\n\nDaten: [transport.opendata.ch](https://transport.opendata.ch) von Opendata.ch, aus der Open-Data-Plattform\nÖffentlicher Verkehr Schweiz ([opentransportdata.swiss](https://opentransportdata.swiss)).\n",
+    "en": "# Swiss departures\n\nLive Swiss public transport on a Tessera screen: when the next train, tram, bus, boat or cable car leaves any stop in\nSwitzerland, and every connection from one stop to another, with delays, platforms and platform changes. The times come\nfrom [transport.opendata.ch](https://transport.opendata.ch), the open service over the Swiss timetable and its real-time\ndata (every operator: SBB, BLS, ZVV, PostAuto and the rest). It needs no account and no key.\n\nNot made by or affiliated with SBB CFF FFS or any transport operator.\n\n## What it adds\n\n**Next departure.** The departures of one stop, under its name. On a single cell, the next one as big as the cell allows, with its line\n(S6, IC5, 14) and where it goes above it, and under it the platform and the two after it. On a tile of two columns or\nmore, a list: one row per departure with its platform and countdown.\n\n**Connections.** The trains from one stop to another, as the Swiss journey planner finds them: also a train that runs on\nbeyond your destination (from Solothurn to Zürich HB that is the IC 5, which goes on to Rorschach, and the IR 55). Each\nrow has the line, when it arrives, how many changes it takes, the platform and the countdown, under the title\n\"Solothurn -> Zürich HB\".\n\n**A card for each.** Tap a tile to open it. A Next departure tile shows every departure of its stop. A Connections tile\nshows every connection, with when it leaves and arrives, how long it takes, its changes, its platform and how full the\ntrain is (when the service knows). Tap a connection, on the card or in the tile's list, to see its legs: each train and\nwhere it goes, where and when you board and get off with the platforms, any walk, and the minutes you have to change.\nBack returns to the list.\n\n## Set up\n\n1. Add the plugin to a screen in Tessera (Plugins, or the Plugins tab of the screen). The screen builds once.\n2. In Layout, place **Next departure** or **Connections** from the library's Plugins group.\n3. In the inspector, under **Stop** (or **From** and **To**), type a few letters of the station or stop (`Zürich HB`,\n   `Bern, Bahnhof`, `Lausanne, Flon`) and pick it from the list.\n4. If you like, keep a Next departure tile to one **Transport** (train, tram, bus, boat, cable car), one **Line** or one\n   **Direction**, or a Connections tile to **Direct only**.\n5. Set **Walk to the stop** to the minutes you need. Departures you can no longer make are skipped, and the tile says\n   \"Leave in 3 min\", then \"Leave now\".\n6. Under **Colours**, choose its look (below).\n\n## Colours\n\n- **Look**: *Tessera* (the screen's own blue badges), *Swiss red* (red line badges, as on the boards in the stations) or\n  *Station board* (the tile a dark board with white words, in light and dark alike; its card takes the red badges).\n- **Colour by transport**: trains red, trams and metros blue, buses yellow, boats purple, cable cars green.\n- **Colour when it's time to leave**: with a walk to the stop, the tile turns orange in the minute you should set off.\n- The colours are the screen's own, so they follow its light and dark look. You can still give the tile a colour of\n  your own in the editor; the station board keeps its dark face.\n\n## Good to know\n\n- Tessera asks transport.opendata.ch once a minute per stop or connection, for every screen and tile together. The\n  screen counts down on its own clock in between, in minutes (\"8 min\"), and the next departure to the second in its\n  last two minutes (1:42, 0:42). A time an hour or more away is shown as a time of day.\n- A departure that runs a minute or more late gets \"+2'\" behind where it goes, and its countdown includes the delay.\n  A connection's arrival time includes its delay at the destination too. Turn **Show delays** off to leave the \"+2'\"\n  out.\n- The platform of a train (Pl. 7) or the stand of a bus or tram (Stand D) shows when the service knows it. A platform\n  that changed shows the new one, in full ink on a list. Turn **Show platform** off to leave it out.\n- **Direction** keeps the departures whose *last* stop is that place. A Swiss stop usually serves both directions with\n  one id, so this is how a tile keeps to one side. For trains that only pass through a place, use **Connections**.\n- **Line** matches by line number. At a big station a train and a bus can share a number (S5 and IC5); set\n  **Transport** as well to keep them apart.\n- The Connections tile asks the journey planner for the next connections from now. A train that already left by the\n  timetable but runs late is not among them.\n- The legs of a connection are asked when you tap it, not before, so the card may say \"Asking for the route\" for a\n  moment; while the card stays open they are asked again every minute and a half. A connection with more legs than\n  fit says how many more there are.\n- **Colour when it's time to leave** needs a walk to the stop; without one it does nothing.\n- A departure that is due says \"now\".\n- When the service does not answer, the tile keeps the last times it had and says they may be old.\n- In English, German, French and Italian: it follows the screen's language.\n- Works on every board. Made and used daily on a Guition 4-inch (ESP32-S3), and drawn on the CYD, a 4.3-inch standing\n  and a 10-inch screen as well.\n\n## Privacy\n\nTessera (the app in Home Assistant, not the screen) asks `transport.opendata.ch` for the departures of the stops you\nchoose, the connections between the From and To stops of a Connections tile, the legs of a connection you tap, and stop\nnames while you search in the inspector. The service sees the address of your Home Assistant, those stop ids, times and\nwhat you type in the search, nothing else. No key, account or personal data is sent.\n\n## How it works\n\n- `tessera-plugin.yaml`: the two tiles, their options, the card, and the fetches the app carries out: stops by name for\n  the search; the departures of a stop (and from the same answer, the lines and directions for the inspector); the\n  connections between two stops; and the legs of one connection, which the card asks for when you tap it.\n- `components/swiss_departures/`: the ESPHome component that draws the tiles and the card and counts down.\n- `translations/`: the words on the screen (`screen`) and in the app (`app`).\n\nData: [transport.opendata.ch](https://transport.opendata.ch) by Opendata.ch, from the Swiss open transport data platform\n([opentransportdata.swiss](https://opentransportdata.swiss)).\n"
    },
    "changelog": {
-    "en": "# Changelog\n\n## 1.0.0 - 2026-11-21\n- First release: the next departures from any Swiss stop, and every connection from one stop to another, live from\n  transport.opendata.ch, with delays, platforms and platform changes.\n- **Next departure** tile: find your stop by name, and keep to one kind of transport, one line or one direction.\n- **Connections** tile: every train from one stop to another (also one that runs on beyond your destination), with when\n  it arrives and its changes, under a title \"From -> To\".\n- A tap opens a card with every departure or connection; a tap on a connection shows its legs: each train, where you\n  board and get off with times and platforms, walks, and the minutes to change.\n- With a walk to the stop, departures you can no longer make are skipped and the tile says when to leave.\n- Colours: Tessera's blue, Swiss red line badges, or a dark station board; badges by transport if you like; and the\n  tile turns orange when it is time to leave.\n"
+    "en": "# Changelog\n\n## 1.1.0 - 2026-11-24\n- In German, French and Italian too, following the screen's language (and a README in German).\n- Countdowns read \"8 min\", and to the second only in the last two minutes, so they never look like a time of day.\n- A Next departure tile shows its stop's name above the departures.\n- Buses and trams show their stand (\"Stand D\", \"Kante D\") instead of a platform.\n- A connection's arrival time includes its delay at the destination.\n- The card refreshes a connection's legs every minute and a half while it is open, says how many more legs there are\n  when they do not all fit, and stays on a connection after it leaves the list.\n- The legs are found by Swiss time, also on a screen set to another time zone.\n- Fixed: the transport filter Cable car showed nothing; mountain railways (CC) count as cable cars.\n- Fixed: the tile no longer turns orange where \"Leave now\" has no room; \"Times may be old\" also shows with a walk.\n- Clearer hints in the inspector. A tap on a tile without times opens nothing.\n\n## 1.0.0 - 2026-11-21\n- First release: the next departures from any Swiss stop, and every connection from one stop to another, live from\n  transport.opendata.ch, with delays, platforms and platform changes.\n- **Next departure** tile: find your stop by name, and keep to one kind of transport, one line or one direction.\n- **Connections** tile: every train from one stop to another (also one that runs on beyond your destination), with when\n  it arrives and its changes, under a title \"From -> To\".\n- A tap opens a card with every departure or connection; a tap on a connection shows its legs: each train, where you\n  board and get off with times and platforms, walks, and the minutes to change.\n- With a walk to the stop, departures you can no longer make are skipped and the tile says when to leave.\n- Colours: Tessera's blue, Swiss red line badges, or a dark station board; badges by transport if you like; and the\n  tile turns orange when it is time to leave.\n"
    },
    "image": "store.png"
   },
